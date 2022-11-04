@@ -1,0 +1,97 @@
+library product;
+
+export 'src/product_base.dart';
+
+class Product {
+  var name;
+  var barcode;
+  var price;
+  var color;
+  var piece;
+
+  Product(String name, String barcode, int price, String color, int piece) {
+    this.name = name;
+    this.barcode = barcode;
+    this.price = price;
+    this.color = color;
+    this.piece = piece;
+  }
+}
+
+String Guncelleme(barcode, a) {
+  return "Barkodu " +
+      barcode +
+      " olan ürünün yeni barkodu şu şekildedir: \n" +
+      (a + 1).toString();
+}
+
+Ekleme(List<String> liste, String a) {
+  liste.add(a);
+  print("Yeni ürün eklendi");
+}
+
+Silme(List azo, String a) {
+  azo.remove(a);
+  print("Ürün silindi");
+}
+
+Listeleme(List<dynamic> ozellikler) {
+  return ozellikler;
+}
+
+void main(List<String> args) {
+  var a = 1111;
+  var product = new Product("Ayakkabı", "AAA123", 4000, "kırmızı", 10);
+
+  var product2 = new Product("Ayakkabı", "BBB234", 2342, "mavi", 4);
+
+  List<String> urunListesi = ["AAAA", "BBBB"];
+  print("Ürünler şu şekildedir:");
+  print(urunListesi);
+
+  Ekleme(urunListesi, product.barcode);
+
+  print("Ürünler şu şekildedir:");
+  print(urunListesi);
+
+  Ekleme(urunListesi, product2.barcode);
+
+  print("Ürünler şu şekildedir:");
+  print(urunListesi);
+
+  Silme(urunListesi, product2.barcode);
+  print(urunListesi);
+
+  print("Ürün güncelleniyor");
+  print(Guncelleme(urunListesi[0], a));
+  urunListesi[0] = (a + 1).toString();
+
+  print("Ürün güncelleniyor");
+
+  print(Guncelleme(urunListesi[1], a + 1));
+  urunListesi[1] = (a + 2).toString();
+
+  print(urunListesi);
+  List<dynamic> urunOzellikleri = [
+    "\nBarkod: " +
+        product.barcode +
+        " \n" +
+        "Renk: " +
+        " " +
+        product.color +
+        "\n" +
+        "İsim:" +
+        " " +
+        product.name +
+        "\n" +
+        "Stok Adedi:" +
+        " " +
+        product.piece.toString() +
+        "\n"
+            "Fiyat: " +
+        " " +
+        product.price.toString()
+  ];
+
+  print(Listeleme(urunOzellikleri));
+}
